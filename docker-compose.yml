@@ -1,6 +1,6 @@
 version: "3.8"
 services:
-  GoFlipo-api-dummy:
+  goFlipo-api-dummy:
     build: .
     container_name: goflipo-api
     ports:
