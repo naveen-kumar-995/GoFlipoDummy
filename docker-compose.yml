@@ -1,0 +1,8 @@
+version: "3.8"
+services:
+  GoFlipo-api-dummy:
+    build: .
+    container_name: goflipo-api
+    ports:
+      - "8480:8080"
+    restart: unless-stopped

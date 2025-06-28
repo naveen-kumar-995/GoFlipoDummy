@@ -1,0 +1,5 @@
+com\goflipo\GoFlipoDummyApi\dao\GoFlipoRequestPayload.class
+com\goflipo\GoFlipoDummyApi\dao\GoFlipoResponse.class
+com\goflipo\GoFlipoDummyApi\controller\MainController.class
+com\goflipo\GoFlipoDummyApi\dao\AuthCodeResponse.class
+com\goflipo\GoFlipoDummyApi\GoFlipoDummyApiApplication.class
