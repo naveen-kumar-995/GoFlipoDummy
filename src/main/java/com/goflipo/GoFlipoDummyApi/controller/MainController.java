@@ -33,13 +33,14 @@ public class MainController {
    //-a60b-ca0b06045974
 
    @GetMapping("/api/main/scrubbing-logs")
-    public Mono<GoFlipoResponse> pingGenerate(@RequestParam Mono<Map<String, String>> request)
+    public Mono<GoFlipoResponse> pingGenerate(@RequestParam String request)
     {
 
-        return request.map(requestdata ->{
-                    String authCode = requestdata.get("authcode");
-           return    new GoFlipoResponse<>(true , "Scrubbing loged successfully" , authCode);
-        });
+        AuthCodeResponse authData = new AuthCodeResponse(request);
+        GoFlipoResponse<AuthCodeResponse> response =
+                new GoFlipoResponse<>(true, "Scrubbing loged successfully", authData);
+
+        return Mono.just(response);
     }
 
 }
