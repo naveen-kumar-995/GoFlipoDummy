@@ -33,7 +33,7 @@ public class MainController {
    //-a60b-ca0b06045974
 
    @GetMapping("/api/main/scrubbing-logs")
-    public Mono<GoFlipoResponse> pingGenerate(@RequestParam String request)
+    public Mono<GoFlipoResponse> pingGenerate(@RequestParam(name = "authcode") String request)
     {
 
         AuthCodeResponse authData = new AuthCodeResponse(request);
