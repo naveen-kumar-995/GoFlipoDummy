@@ -9,7 +9,7 @@ import com.goflipo.GoFlipoDummyApi.dao.GoFlipoResponse;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
-import java.util.Objects;
+import java.util.Map;
 import java.util.UUID;
 
 @RestController
@@ -28,4 +28,18 @@ public class MainController {
 
         return Mono.just(response);
     }
+
+   //https://smartping-backend.goflipo.com/api/main/scrubbing-logs?authcode=febb5e83-4d86-499d
+   //-a60b-ca0b06045974
+
+   @GetMapping("/api/main/scrubbing-logs")
+    public Mono<GoFlipoResponse> pingGenerate(@RequestBody Mono<Map<String, String>> request)
+    {
+
+        return request.map(requestdata ->{
+                    String authCode = requestdata.get("authcode");
+           return    new GoFlipoResponse<>(true , "Scrubbing loged successfully" , authCode);
+        });
+    }
+
 }
