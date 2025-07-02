@@ -6,7 +6,9 @@ import com.goflipo.GoFlipoDummyApi.dao.AuthCodeResponse;
 import com.goflipo.GoFlipoDummyApi.dao.GoFlipoRequestPayload;
 import com.goflipo.GoFlipoDummyApi.dao.GoFlipoResponse;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 import reactor.core.publisher.Mono;
 
 import java.util.Map;
@@ -35,6 +37,10 @@ public class MainController {
    @GetMapping("/api/main/scrubbing-logs")
     public Mono<GoFlipoResponse> pingGenerate(@RequestParam(name = "authcode") String request)
     {
+        if(request.equals("8b012f6a-87da-404a-9cea-c4b57f33a649"))
+        {
+            throw new ResponseStatusException(HttpStatus.FORBIDDEN, "Invalid authcode");
+        }
 
         AuthCodeResponse authData = new AuthCodeResponse(request);
         GoFlipoResponse<AuthCodeResponse> response =
