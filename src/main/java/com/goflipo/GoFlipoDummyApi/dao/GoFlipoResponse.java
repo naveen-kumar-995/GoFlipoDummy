@@ -1,14 +1,24 @@
 package com.goflipo.GoFlipoDummyApi.dao;
 
 
+import java.util.Optional;
+
 public class GoFlipoResponse<T> {
     private boolean status;
     private String message;
+    private String error_code;
     private T data;
 
     public GoFlipoResponse(boolean status, String message, T data) {
         this.status = status;
         this.message = message;
+        this.data = data;
+    }
+
+    public GoFlipoResponse(boolean status, String message, String error_code, T data) {
+        this.status = status;
+        this.message = message;
+        this.error_code = error_code;
         this.data = data;
     }
 
