@@ -17,20 +17,24 @@ import java.util.UUID;
 @RestController
 public class MainController {
 
-public static int counter;
+
 
     @PostMapping("/api/main/scrubbing-logs")
     public Mono<GoFlipoResponse> generate(@RequestBody Mono<JsonNode> request) {
-        counter++;
+
         String uuid = UUID.randomUUID().toString();
         AuthCodeResponse authData = new AuthCodeResponse(uuid);
+        try {
+            Thread.sleep(50);
+        }
+        catch (Exception e)
+        {
+
+        }
 
         GoFlipoResponse<AuthCodeResponse> response =
                 new GoFlipoResponse<>(true, "Scrubbing loged successfully", authData);
-        if(counter%10==0) {
-            GoFlipoResponse<AuthCodeResponse> response1 = new GoFlipoResponse<>(false, "Failed ", "456", authData);
-            return Mono.just(response1);
-        }
+
         return Mono.just(response);
     }
 
