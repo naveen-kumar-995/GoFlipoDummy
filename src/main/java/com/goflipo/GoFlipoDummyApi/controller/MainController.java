@@ -24,13 +24,6 @@ public class MainController {
 
         String uuid = UUID.randomUUID().toString();
         AuthCodeResponse authData = new AuthCodeResponse(uuid);
-        try {
-            Thread.sleep(50);
-        }
-        catch (Exception e)
-        {
-
-        }
 
         GoFlipoResponse<AuthCodeResponse> response =
                 new GoFlipoResponse<>(true, "Scrubbing loged successfully", authData);
